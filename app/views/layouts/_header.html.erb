@@ -1,14 +1,17 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#770000;">
     <div class="container">
-      <a class="navbar-brand" href="/"><%= image_tag('main-logo.png') %></a>
+      <a class="navbar-brand" href="/"><%= image_tag 'main-logo.png', :size =>'320x120' %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div>
-        <ul>
-          <li class="nav-item">スケジュール</li>
-          <li class="nav-item">記事検索</li>
-          <li class="nav-item">使用機材など</li>
-          <li class="nav-item">ライブ感想掲示板</li>
-          <li class="nav-item">お問い合わせ</li>
+        <ul class="navbar-nav navbar-collapse ml-auto">
+          <li class="nav-item text-light">スケジュール</li>
+          <li class="nav-item text-light">記事検索</li>
+          <li class="nav-item text-light">使用機材など</li>
+          <li class="nav-item text-light">ライブ感想掲示板</li>
+          <li class="nav-item text-light">お問い合わせ</li>
         </ul>
       </div>
     </div>
