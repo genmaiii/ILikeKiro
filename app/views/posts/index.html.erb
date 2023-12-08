@@ -3,11 +3,29 @@
     <div class="row">
       <div class="col-md-3">
         <div>
-          <a class="text-light" href="/users/sign_in">ログイン</a><br>
-          <a class="text-light" href="/users/sign_up">新規登録</a>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </li>
+            <li>
+              <%= link_to 'マイページ', user_path(current_user.id) %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "新規登録", new_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to "ログイン", new_user_session_path %>
+            </li>
+          <% end %>
         </div>
         <div>
+          
           <a class="text-light" href="/posts/new">新規投稿を作成</a>
+        </div>
+        <div>
+          <li>ライブを追加(管理者のみ)</li>
+          <li>セトリを作成(管理者のみ)</li>
         </div>
         <div>
           <p>並び替え(昇順・降順)</p>
