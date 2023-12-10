@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   
   def create
     @post = Post.new(post_params)
-    @post.save
+    @post.user_id = current_user.id
     if @post.save
       redirect_to post_path(@post)
       flash[:notice] = '投稿が送信されました'

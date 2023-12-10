@@ -9,7 +9,7 @@
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
             </li>
             <li>
-              <%= link_to 'マイページ', user_path(current_user.id) %>
+              <%= link_to "マイページ", user_path(current_user.id) %>
             </li>
           <% else %>
             <li>
@@ -25,7 +25,9 @@
           <a class="text-light" href="/posts/new">新規投稿を作成</a>
         </div>
         <div>
-          <li>ライブを追加(管理者のみ)</li>
+          <li>
+            <a class="text-light" href="/lives/new">ライブを追加(管理者のみ)</a> 
+          </li>
           <li>セトリを作成(管理者のみ)</li>
         </div>
         <div>
