@@ -1,2 +1,10 @@
-<h1>Lives#edit</h1>
-<p>Find me in app/views/lives/edit.html.erb</p>
+<main>
+  <div>
+    <h1>ライブ名編集</h1>
+    <%= form_with model:@live, local: true do |f| %>
+      <h4>ライブ名</h4>
+      <%= f.text_field :name %>
+      <%= f.submit '保存' %>
+    <% end %>
+  </div>
+</main>

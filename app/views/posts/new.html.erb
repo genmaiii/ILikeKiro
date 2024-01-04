@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <h2>新規投稿</h2>
   <%= form_with model: @post, local:true, class: "form-group" do |f| %>
     <div class="form-group">
@@ -13,11 +13,11 @@
   
     <div class="form-group">
       <label for="post_category">カテゴリ</label>
-      <%= f.select :category, [["ワンマンライブ","ワンマンライブ"], ["対バン", "対バン"], ["フェス", "フェス"], ["その他", "その他"]], include_blank: "選択してください" %>
+      <%= f.select :category, [["ワンマン","ワンマン"], ["対バン", "対バン"], ["フェス", "フェス"], ["その他", "その他"]], include_blank: "選択してください" %>
     </div>
   
     <div class="form-group">
-      <p>イベント名のドロップダウンリスト</p>
+      <p>イベント名のドロップダウンリスト→カラム名がevent_name_idになってるのでlive_name_idに変更してね</p>
     </div>
   
     <div class="form-group">
