@@ -20,6 +20,21 @@ class LivesController < ApplicationController
 
   def edit
     @live = Live.find(params[:id])
+    if @live.user == current_user
+      render :edit
+      flash[:notice] = '投稿が更新されました'
+    else
+      redirect_to books_path
+    end
+  end
+  
+  def update
+    @live = Live.find(params[:id])
+    if @live.update(live_params)
+      redirect_to '/lives'
+    else
+      render :edit
+    end
   end
 
   private

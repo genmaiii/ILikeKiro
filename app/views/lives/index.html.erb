@@ -4,7 +4,10 @@
     <p>ライブ一覧</p>
     <% @lives.each do |live| %>
     <div>
-      <p>ライブ名：<%= live.name %></p>
+      <tr>
+        <td>ライブ名：<%= live.name %></td>
+        <td>へんしう画面へのリンク</td>
+      </tr>
     </div>
     <% end %>
   </div>
