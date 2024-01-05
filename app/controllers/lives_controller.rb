@@ -27,7 +27,7 @@ class LivesController < ApplicationController
       redirect_to books_path
     end
   end
-  
+
   def update
     @live = Live.find(params[:id])
     if @live.update(live_params)
