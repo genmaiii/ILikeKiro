@@ -1,4 +1,15 @@
 <div class="container">
+  <h2>新規ライブ</h2>
+  
+  <% if @live.errors.any? %>
+    <%= @live.errors.count %>件のエラーが発生しました
+    <ul>
+    <% @live.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  
   <%= form_with model: @live, local:true, class: "form-group" do |f| %>
     <div class="form-group">
       <label for="live_name">ライブ名</label>
