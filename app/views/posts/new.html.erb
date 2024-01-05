@@ -27,7 +27,8 @@
     </div>
   
     <div class="form-group">
-      <p>イベント名のドロップダウンリスト→カラム名がevent_name_idになってるのでlive_name_idに変更してね</p>
+      <label for="post_live_name">ライブ名</label>
+      <%= f.collection_select :live_name_id, Live.all, :id, :name, include_blank: "選択して下さい" %>
     </div>
   
     <div class="form-group">
