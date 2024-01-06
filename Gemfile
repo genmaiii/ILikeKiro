@@ -67,6 +67,8 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
+gem "jquery-turbolinks"
+gem 'select2-rails'
 gem 'font-awesome-sass', '~> 5.13'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'

@@ -20,10 +20,14 @@
             </li>
           <% end %>
         </div>
+        
         <div>
-          
+          <% if user_signed_in? %>
           <a class="text-light" href="/posts/new">新規投稿を作成</a>
+          <% else %>
+          <% end %>
         </div>
+        
         <div>
           <li>
             <a class="text-light" href="/lives/new">ライブを作成(管理者のみ)</a> 
