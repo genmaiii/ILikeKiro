@@ -13,7 +13,7 @@
   <%= form_with model: @post, local:true, class: "form-group" do |f| %>
     <div class="form-group">
       <label for="post_live_date">ライブ日時</label>
-      <%= f.date_field :event_date %>
+      <%= f.date_field :live_date %>
     </div>
 
     <div class="form-group">
@@ -25,15 +25,10 @@
       <label for="post_category">カテゴリ</label>
       <%= f.select :category, [["ワンマン","ワンマン"], ["対バン", "対バン"], ["フェス", "フェス"], ["その他", "その他"]], include_blank: "選択してください" %>
     </div>
-
-    <div class="form-group">
-      <label for="post_live_name">ライブ名</label>
-      <%= f.collection_select :live_name_id, Live.all, :id, :name, include_blank: "選択してください" %>
-    </div>
     
     <div class="form-group">
       <label for="post_live_name">ライブ名</label>
-      <input list="liveNames" name="live_name_id" id="liveNameInput" class="form-control" placeholder="入力または選択してください">
+      <input list="liveNames" name="live_name" id="liveNameInput" class="form-control" placeholder="入力または選択してください">
       <datalist id="liveNames">
         <% Live.all.each do |live| %>
           <option value="<%= live.name %>">

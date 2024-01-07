@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:live_date, :venue, :category, :comment)
+    params.require(:post).permit(:live_date, :venue, :category, :live_name, :comment)
   end
 
 end
