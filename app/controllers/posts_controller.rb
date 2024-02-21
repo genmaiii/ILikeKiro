@@ -20,6 +20,7 @@ class PostsController < ApplicationController
     else
       redirect_to '/posts'
       flash[:notice] = '投稿に失敗しました'
+      Rails.logger.debug @post.errors.full_messages
     end
   end
 

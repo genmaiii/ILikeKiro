@@ -27,8 +27,8 @@
     </div>
     
     <div class="form-group">
-      <label for="post_live_name">ライブ名</label>
-      <input list="liveNames" name="live_name" id="liveNameInput" class="form-control" placeholder="入力または選択してください">
+      <%= f.label :live_name, 'ライブ名' %>
+      <%= f.text_field :live_name, list: 'liveNames', class: 'form-control', placeholder: '入力または選択してください' %>
       <datalist id="liveNames">
         <% Live.all.each do |live| %>
           <option value="<%= live.name %>">

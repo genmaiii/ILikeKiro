@@ -2,13 +2,13 @@
   <p id = notice><%= flash[:notice] %></p>
   <div class="container">
     <p>ライブ一覧</p>
+    <table>
     <% @lives.each do |live| %>
-    <div>
       <tr>
         <td>ライブ名：<%= live.name %></td>
         <td>へんしう画面へのリンク</td>
       </tr>
-    </div>
     <% end %>
+    </table>
   </div>
 </main>
