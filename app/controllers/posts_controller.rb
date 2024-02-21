@@ -18,14 +18,32 @@ class PostsController < ApplicationController
       redirect_to '/posts'
       flash[:notice] = '投稿が送信されました'
     else
-      render :index
+      redirect_to '/posts'
       flash[:notice] = '投稿に失敗しました'
     end
   end
 
   def edit
+    @post = Post.find(params[:id])
+    if @post.user == current_user
+      render :edit
+      flash[:notice] = '投稿が更新されました'
+    else
+      redirect_to posts_path
+    end
   end
-
+  
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to '/posts'
+      flash[:notice] = '投稿が更新されました'
+    else
+      render :edit
+      flash[:notice] = '投稿の更新に失敗しました'
+    end
+  end
+  
 
   private
   

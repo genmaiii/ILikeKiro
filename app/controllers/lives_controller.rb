@@ -22,9 +22,9 @@ class LivesController < ApplicationController
     @live = Live.find(params[:id])
     if @live.user == current_user
       render :edit
-      flash[:notice] = '投稿が更新されました'
+      flash[:notice] = 'ライブ名が更新されました'
     else
-      redirect_to books_path
+      redirect_to lives_path
     end
   end
 
@@ -32,8 +32,10 @@ class LivesController < ApplicationController
     @live = Live.find(params[:id])
     if @live.update(live_params)
       redirect_to '/lives'
+      flash[:notice] = 'ライブ名が更新されました'
     else
-      render :edit
+      redirect_to '/lives'
+      flash[:notice] = 'ライブ名の更新に失敗しました'
     end
   end
 

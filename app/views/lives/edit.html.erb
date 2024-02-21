@@ -1,5 +1,6 @@
 <main>
   <div>
+    <p id="notice"><%= flash[:notice] %></p>
     <h1>ライブ名編集</h1>
     <%= form_with model:@live, local: true do |f| %>
       <h4>ライブ名</h4>
