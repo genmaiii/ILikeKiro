@@ -24,7 +24,6 @@
         <div>
           <% if user_signed_in? %>
           <a class="text-light" href="/posts/new">新規投稿を作成</a>
-          <% else %>
           <% end %>
         </div>
 
@@ -48,12 +47,12 @@
 
       <div class="col-md-9">
         <div>
-          <h1>セトリ一覧</h1>
+          <h1 class="text-center">セトリ一覧</h1>
         </div>
         <div>
-          <h1>投稿一覧</h1>
+          <h1 class="text-center">投稿一覧</h1>
           <% @posts.each do |post| %>
-          <a href="posts/<%= post.id %>" class="text-light">
+          <a href="/posts/<%= post.id %>" class="text-light">
             <div class="card-body rounded" style="background-color:#2F3236;">
               <table>
                 <tr>
@@ -77,7 +76,7 @@
                 </tr>
               </table>
               <div>
-                <%= post.comment %>
+                <%= simple_format(h(post.comment)) %>
               </div>
             </div>
           </a>

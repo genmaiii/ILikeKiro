@@ -1,14 +1,51 @@
 <p id="notice"><%= flash[:notice] %></p>
 
-<div class="container">
-  <h2>マイページ</h2>
-  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: 'no_image.png' %>
-  <h3><%= @user.name %></h3>
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+<div class="container-md">
+  <div class="row">
+    <div class="col-md-3">
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: 'no_image.png' %>
+      <h3><%= @user.name %></h3>
+      <% if user_signed_in? %>
+        <% if @user.id == current_user.id %>
+          <p><a class="text-light" href="/users/<%= @user.id %>/edit">プロフィール編集</a></p>
+          <p><a class="text-light" href="/posts/new">新規投稿を作成</a></p>
+        <% end %>
+      <% end %>
+    </div>
+  
+    <div class="col-md-9">
+      <h1 class="text-center">投稿一覧</h1>
+      <% @posts.each do |post| %>
+      <a href="/posts/<%= post.id %>" class="text-light">
+        <div class="card-body rounded" style="background-color:#2F3236;">
+           <table>
+            <tr>
+              <td>
+                <%= link_to user_path(post.user) do %>
+                  <%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no_image.png" %>
+                <% end %>
+                <%= post.user.name %>
+              </td>
+              <td>-</td>
+              <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td><%= post.live_date.strftime('%Y/%m/%d') %></td>
+              <td>-</td>
+              <td><%= post.venue %></td>
+              <td>-</td>
+              <td><%= post.live_name %></td>
+            </tr>
+          </table>
+          <div>
+            <%= post.comment %>
+          </div>
+        </div>
+      </a>
+      <h6></h6>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-
-
-<p>ユーザーのマイページ　プロフィール編集、そのユーザーの投稿一覧を表示</p>
