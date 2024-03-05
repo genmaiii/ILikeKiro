@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
   end
 
   def new
@@ -28,7 +29,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.user == current_user
       render :edit
-      flash[:notice] = '投稿が更新されました'
     else
       redirect_to posts_path
     end
