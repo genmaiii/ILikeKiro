@@ -1,9 +1,8 @@
-<p id="notice"><%= flash[:notice] %></p>
-
 <div class="container-md">
+  <p id="notice"><%= flash[:notice] %></p>
   <div class="row">
     <div class="col-md-3">
-      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: 'no_image.png' %>
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: 'no_image.png', class:"rounded-circle"; %>
       <h3><%= @user.name %></h3>
       <% if user_signed_in? %>
         <% if @user.id == current_user.id %>
@@ -22,7 +21,7 @@
             <tr>
               <td>
                 <%= link_to user_path(post.user) do %>
-                  <%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no_image.png" %>
+                  <%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no_image.png", class:"rounded-circle"; %>
                 <% end %>
                 <%= post.user.name %>
               </td>
@@ -40,7 +39,7 @@
             </tr>
           </table>
           <div>
-            <%= post.comment %>
+            <%= simple_format(h(post.comment)) %>
           </div>
         </div>
       </a>

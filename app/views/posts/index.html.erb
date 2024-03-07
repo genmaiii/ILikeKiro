@@ -6,17 +6,17 @@
         <div>
           <% if user_signed_in? %>
             <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-light"; %>
             </li>
             <li>
-              <%= link_to "マイページ", user_path(current_user.id) %>
+              <%= link_to "マイページ", user_path(current_user.id), class:"text-light"; %>
             </li>
           <% else %>
             <li>
-              <%= link_to "新規登録", new_user_registration_path %>
+              <%= link_to "新規登録", new_user_registration_path, class:"text-light"; %>
             </li>
             <li>
-              <%= link_to "ログイン", new_user_session_path %>
+              <%= link_to "ログイン", new_user_session_path, class:"text-light"; %>
             </li>
           <% end %>
         </div>
@@ -58,7 +58,7 @@
                 <tr>
                   <td>
                     <%= link_to user_path(post.user) do %>
-                      <%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no_image.png" %>
+                      <%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no_image.png", class:"rounded-circle"; %>
                     <% end %>
                     <%= post.user.name %>
                   </td>
