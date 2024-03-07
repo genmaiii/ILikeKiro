@@ -8,6 +8,9 @@
         <% if @user.id == current_user.id %>
           <p><a class="text-light" href="/users/<%= @user.id %>/edit">プロフィール編集</a></p>
           <p><a class="text-light" href="/posts/new">新規投稿を作成</a></p>
+          <% if current_user.try(:admin?) %>
+          <%= link_to '管理画面', rails_admin_path, class:"text-light"; %>
+        <% end %>
         <% end %>
       <% end %>
     </div>
