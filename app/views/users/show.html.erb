@@ -16,7 +16,7 @@
     </div>
   
     <div class="col-md-9">
-      <h1 class="text-center">投稿一覧</h1>
+      <h1 class="text-center"><%= @user.name %>の投稿一覧</h1>
       <% @posts.each do |post| %>
       <a href="/posts/<%= post.id %>" class="text-light">
         <div class="card-body rounded" style="background-color:#2F3236;">

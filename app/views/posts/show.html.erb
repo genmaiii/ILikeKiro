@@ -2,11 +2,19 @@
   <p id="notice"><%= flash[:notice] %></p>
   <h1 class="text-center">投稿詳細</h1>
   <div class="card-body rounded" style="background-color:#2F3236;">
-    <%= link_to user_path(@post.user) do %>
-    <%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, fallback: "no_image.png", class:"rounded-circle"; %>
-    <% end %>
-    <%= @post.user.name %>
-    <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+    <table>
+      <tr>
+        <td>
+          <%= link_to user_path(@post.user) do %>
+            <%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, fallback: "no_image.png", class:"rounded-circle"; %>
+          <% end %>
+        </td>
+        <td><%= @post.user.name %></td>
+        <td>-</td>
+        <td>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+    </table>
+
     <p>ライブ日時：<%= @post.live_date.strftime('%Y/%m/%d') %></p>
     <p>開催地：<%= @post.venue %></p>
     <p>カテゴリ：<%= @post.category %></p>
