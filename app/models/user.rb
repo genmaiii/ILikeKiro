@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   
   validates :name, presence: true, uniqueness: true, length: {in: 2..20 }
+  validates :display_name, presence: true, uniqueness: true, length: {in: 2..20 }
   validates :email, uniqueness: true
   
   def email_required?

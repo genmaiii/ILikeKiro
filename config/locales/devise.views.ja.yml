@@ -3,7 +3,8 @@ ja:
     attributes:
       user:
         current_password: "現在のパスワード"
-        name: "名前(表示名)"
+        name: "ユーザー名"
+        display_name: "表示名"
         email: "メールアドレス"
         password: "パスワード(英数字6文字以上)"
         password_confirmation: "パスワード再入力(確認用)"

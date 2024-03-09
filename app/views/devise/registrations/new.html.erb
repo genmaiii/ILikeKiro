@@ -7,7 +7,12 @@
   
       <div class="field">
         <%= f.label :name %><br />
-        <%= f.text_field :name, autofocus: true %>
+        @<%= f.text_field :name, autofocus: true %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :display_name %><br />
+        <%= f.text_field :display_name, autofocus: true %>
       </div>
 
       <div class="field">

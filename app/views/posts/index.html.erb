@@ -59,8 +59,9 @@
                   <td>
                     <%= link_to user_path(post.user) do %>
                       <%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no_image.png", class:"rounded-circle"; %>
+                      <%= post.user.display_name %>
+                      @<%= post.user.name %>
                     <% end %>
-                    <%= post.user.name %>
                   </td>
                   <td>-</td>
                   <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
