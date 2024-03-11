@@ -19,9 +19,8 @@ class PostsController < ApplicationController
       redirect_to '/posts'
       flash[:notice] = '投稿が送信されました'
     else
-      redirect_to '/posts'
+      redirect_to '/posts/new'
       flash[:notice] = '投稿に失敗しました'
-      Rails.logger.debug @post.errors.full_messages
     end
   end
 

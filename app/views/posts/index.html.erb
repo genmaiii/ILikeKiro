@@ -51,10 +51,10 @@
         </div>
         <div>
           <h1 class="text-center">投稿一覧</h1>
+          
           <% @posts.each do |post| %>
-          <a href="/posts/<%= post.id %>" class="text-light">
-            <div class="card-body rounded" style="background-color:#2F3236;">
-              <table>
+          <div class="card-body rounded" style="background-color:#2F3236;">
+            <table>
                 <tr>
                   <td>
                     <%= link_to user_path(post.user) do %>
@@ -67,21 +67,23 @@
                   <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
                 </tr>
               </table>
-              <table>
-                <tr>
-                  <td><%= post.live_date.strftime('%Y/%m/%d') %></td>
-                  <td>-</td>
-                  <td><%= post.venue %></td>
-                  <td>-</td>
-                  <td><%= post.live_name %></td>
-                </tr>
-              </table>
-              <p></p>
-              <div>
-                <%= simple_format(h(post.comment)) %>
-              </div>
-            </div>
-          </a>
+            <a href="/posts/<%= post.id %>" class="text-light">
+                <table>
+                  <tr>
+                    <td><%= post.live_date.strftime('%Y/%m/%d') %></td>
+                    <td>-</td>
+                    <td><%= post.venue %></td>
+                    <td>-</td>
+                    <td><%= post.live_name %></td>
+                  </tr>
+                </table>
+                <p></p>
+                <div>
+                  <%= simple_format(h(post.comment)) %>
+                </div>
+              </a>
+          </div>
+              
           <h6></h6>
           <% end %>
         </div>

@@ -1,21 +1,21 @@
 <div class="container">
-  <p id="notice"><%= flash[:notice] %></p>
+  <p id="notice"><%= flash[:error] %></p>
   <h1 class="text-center">プロフィール編集</h1>
 
   <%= form_with model:@user, local:true do |f| %>
   <div>
     <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.png", class:"rounded-circle"; %>
-    <label for="inputImage">プロフィール画像</label>
+    <label>プロフィール画像</label>
     <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
   </div>
     
   <div>
-    <%= f.label :name %>
-    @<%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+    <%= f.label :name %><br />
+    @<%= f.text_field :name, autofocus: true %>
   </div>
   
   <div>
-    <%= f.label :display_name %>
+    <%= f.label :display_name %><br />
     <%= f.text_field :display_name %>
   </div>
   

@@ -1,5 +1,6 @@
 <div class="container-md">
   <p id="notice"><%= flash[:notice] %></p>
+  <p id="notice"><%= flash[:error] %></p>
   <div class="row">
     <div class="col-md-3">
       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: 'no_image.png', class:"rounded-circle"; %>
@@ -18,22 +19,20 @@
   
     <div class="col-md-9">
       <h1 class="text-center"><%= @user.display_name %>の投稿一覧</h1>
+      
       <% @posts.each do |post| %>
-      <a href="/posts/<%= post.id %>" class="text-light">
-        <div class="card-body rounded" style="background-color:#2F3236;">
-           <table>
-            <tr>
-              <td>
-                <%= link_to user_path(post.user) do %>
-                  <%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no_image.png", class:"rounded-circle"; %>
-                <% end %>
-                <%= post.user.display_name %>
-              </td>
-              <td>@<%= post.user.name %></td>
-              <td>-</td>
-              <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-            </tr>
-          </table>
+      <div class="card-body rounded" style="background-color:#2F3236;">
+        <table>
+          <tr>
+            <td>
+              <%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no_image.png", class:"rounded-circle"; %>
+              <%= post.user.display_name %>
+              @<%= post.user.name %></td>
+            <td>-</td>
+            <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+        </table>
+        <a href="/posts/<%= post.id %>" class="text-light">
           <table>
             <tr>
               <td><%= post.live_date.strftime('%Y/%m/%d') %></td>
@@ -43,11 +42,13 @@
               <td><%= post.live_name %></td>
             </tr>
           </table>
+          <p></p>
           <div>
             <%= simple_format(h(post.comment)) %>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
+      
       <h6></h6>
       <% end %>
     </div>
