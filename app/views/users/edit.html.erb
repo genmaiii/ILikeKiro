@@ -3,9 +3,11 @@
   
   <% if @user.errors.any? %>
     <p>プロフィールを変更できませんでした</p>
+    <ul>
     <% @user.errors.full_messages.each do |message| %>
-      <%= message %>
+      <li><%= message %></li>
     <% end %>
+    </ul>
   <% end %>
 
   <%= form_with model:@user, local:true do |f| %>
