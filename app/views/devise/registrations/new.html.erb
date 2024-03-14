@@ -4,24 +4,22 @@
 
     <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
 
-
       <% if @user.errors.any? %>
-        <p>必須項目が入力されていないか、各項目の条件が守られていないため、ユーザーを登録できません</p>
+        <p>すべての項目が入力されていないか、各項目の条件が守られていないため、ユーザーを登録できません</p>
+      <% end %>
 
       <div class="field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name, autofocus: true %>
+        <p><%= f.label :name %> ※2~20字、半角英数字・アンダーバーのみ使用可</p>
+        @<%= f.text_field :name, autofocus: true %>
       </div>
 
       <div class="field">
-        <%= f.label :display_name %><br />
-        <%= f.text_field :display_name, autofocus: true %>
+        <p><%= f.label :display_name %> ※2~20字</p>
+        <%= f.text_field :display_name %>
       </div>
 
       <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <% end %><br />
+        <p><%= f.label :password %> ※6文字以上、半角英数字のみ使用可</p>
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
 
@@ -31,11 +29,10 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "登録する" %>
+        <%= f.submit "登録する", class: "btn btn-success" %>
       </div>
     <% end %>
-
+    
     <a class="text-light" href="/users/sign_in">ログインはこちら</a>
   </div>
 </main>
-

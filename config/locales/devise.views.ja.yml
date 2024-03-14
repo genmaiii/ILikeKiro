@@ -6,8 +6,8 @@ ja:
         name: "ユーザー名"
         display_name: "表示名"
         email: "メールアドレス"
-        password: "パスワード(英数字6文字以上)"
-        password_confirmation: "パスワード再入力(確認用)"
+        password: "パスワード"
+        password_confirmation: "パスワード再入力"
         remember_me: "ログインを記憶"
     models:
       user: "ユーザー"
