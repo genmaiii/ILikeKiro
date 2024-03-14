@@ -23,25 +23,30 @@
 
         <div>
           <% if user_signed_in? %>
-          <a class="text-light" href="/posts/new">新規投稿を作成</a>
+          <p>
+            <a class="text-light" href="/posts/new">新規投稿を作成</a>
+          </p>
           <% end %>
         </div>
 
         <div>
-          <li>
+          <p>
             <a class="text-light" href="/lives/new">ライブを作成(管理者のみ)</a>
-          </li>
-          <li>セトリを作成(管理者のみ)</li>
+          </p>
         </div>
+        
         <div>
-          <p>並び替え(昇順・降順)</p>
+          <p><%= link_to '投稿日時が新しい順', posts_path(latest: "true"), class:"text-light"; %></p>
+          <p><%= link_to '投稿日時が古い順', posts_path(old: "true"), class:"text-light"; %></p>
+        </div>
+          
+        <div>  
           <p>絞り込み</p>
-          <p>セトリ表示ON・OFF</p>
           <p>条件をクリア</p>
           <p>年</p>
           <p>月</p>
-          <p>イベント名</p>
-          <p>場所</p>
+          <p>ライブ・イベント名</p>
+          <p>開催地</p>
         </div>
       </div>
 

@@ -1,6 +1,15 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    if params[:latest]
+      @posts = Post.latest
+    elsif params[:old]
+      @posts = Post.old
+    elsif params[:most_favorited]
+      @posts = Post.most_favorited
+    else
+      @posts = Post.all
+      @posts = Post.all.order(created_at: :desc)
+    end
   end
 
   def show
