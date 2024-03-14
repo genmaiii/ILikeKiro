@@ -15,7 +15,6 @@ class UsersController < ApplicationController
        flash[:notice] = "プロフィールを変更しました"
     else
       render :edit
-      flash[:error] = @user.errors.full_messages.join(', ')
     end
   end
   

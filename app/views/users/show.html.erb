@@ -1,6 +1,6 @@
 <div class="container-md">
   <p id="notice"><%= flash[:notice] %></p>
-  <p id="notice"><%= flash[:error] %></p>
+  
   <div class="row">
     <div class="col-md-3">
       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: 'no_image.png', class:"rounded-circle"; %>

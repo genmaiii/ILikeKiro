@@ -1,7 +1,14 @@
 <div class="container-md">
   <h2>投稿編集</h2>
   
-  <p id="notice"><%= flash[:notice] %></p>
+  <% if @post.errors.any? %>
+    <p>投稿を更新できませんでした</p>
+    <ul>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
   
   <%= form_with model:@post, local: true do |f| %>
     <div>

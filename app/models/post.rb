@@ -4,8 +4,8 @@ class Post < ApplicationRecord
   
   validates :live_date, presence: true
   validates :venue, presence: true
-  validates :live_name, presence: true
   validates :category, presence: true
+  validates :live_name, presence: true
   validates :comment, presence: true
 
 end

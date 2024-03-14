@@ -1,9 +1,8 @@
 <div class="container">
-  <p id="notice"><%= flash[:notice] %></p>
   <h1 class="text-center">新規投稿</h1>
 
   <% if @post.errors.any? %>
-    <%= @post.errors.count %>件のエラーが発生しました
+    <p>投稿の送信に失敗しました</p>
     <ul>
     <% @post.errors.full_messages.each do |message| %>
       <li><%= message %></li>

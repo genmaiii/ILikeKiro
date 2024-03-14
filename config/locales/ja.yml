@@ -16,6 +16,12 @@ ja:
         email: メールアドレス
         password: パスワード
       post:
+        live_date: ライブ日時
+        venue: 開催地
+        category: カテゴリ
+        live_name: ライブ名
+        comment: 本文
+        
         
     errors:
       messages:

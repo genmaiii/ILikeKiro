@@ -19,8 +19,7 @@ class PostsController < ApplicationController
       redirect_to '/posts'
       flash[:notice] = '投稿が送信されました'
     else
-      redirect_to '/posts/new'
-      flash[:notice] = '投稿に失敗しました'
+      render :new
     end
   end
 
@@ -40,7 +39,6 @@ class PostsController < ApplicationController
       flash[:notice] = '投稿が更新されました'
     else
       render :edit
-      flash[:notice] = '投稿の更新に失敗しました'
     end
   end
   

@@ -1,6 +1,12 @@
 <div class="container">
-  <p id="notice"><%= flash[:error] %></p>
   <h1 class="text-center">プロフィール編集</h1>
+  
+  <% if @user.errors.any? %>
+    <p>プロフィールを変更できませんでした</p>
+    <% @user.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
 
   <%= form_with model:@user, local:true do |f| %>
   <div>
@@ -10,12 +16,12 @@
   </div>
     
   <div>
-    <%= f.label :name %><br />
+    <%= f.label :name %><br>
     @<%= f.text_field :name, autofocus: true %>
   </div>
   
   <div>
-    <%= f.label :display_name %><br />
+    <%= f.label :display_name %><br>
     <%= f.text_field :display_name %>
   </div>
   
