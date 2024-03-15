@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :post_comments, dependent: :destroy
   belongs_to :live, foreign_key: :live_name, optional: true
   
   validates :live_date, presence: true

@@ -7,10 +7,10 @@
       <tr>
         <td>
           <%= link_to user_path(@post.user) do %>
-            <%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, fallback: "no_image.png", class:"rounded-circle"; %>
-            <%= @post.user.display_name %>
-            @<%= @post.user.name %>
+            <%= attachment_image_tag @post.user, :profile_image, :fill, 70, 70, fallback: "no_image.png", class:"rounded-circle"; %>
           <% end %>
+          <%= @post.user.display_name %>
+          @<%= @post.user.name %>
         </td>
         <td>-</td>
         <td>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></td>
@@ -30,5 +30,52 @@
     <% end %>
   </div>
   
-  <p>コメント</p>
+  <h6></h6>
+  
+  <div class="card-body rounded" style="background-color:#2F3236;">
+    <div>
+      <% if user_signed_in? %>
+        <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
+          <%= f.text_area :comment, placeholder: "コメントを入力" %>
+          <%= f.submit "送信する", class: "btn btn-sm btn-success" %>
+        <% end %>
+      <% end %>
+    </div>
+    
+    <div>
+      <p><%= @post.post_comments.count %>件のコメント</p>
+      
+      <div>
+        <p>投稿日時が新しい順、投稿日時が古い順</p>
+      </div>
+      
+      <% @post.post_comments.each do |post_comment| %>
+      <table>
+        <tr>
+          <td>
+            <%= link_to user_path(@post.user) do %>
+              <%= attachment_image_tag post_comment.user, :profile_image, :fill, 40, 40, fallback: "no_image.png", class:"rounded-circle"; %>
+            <% end %>
+            <%= post_comment.user.display_name %>
+            @<%= post_comment.user.name %>
+            <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= simple_format(h(post_comment.comment)) %></td>
+        </tr>
+        <tr>
+          <td>
+            <% if post_comment.user == current_user %>
+              <%= link_to "コメントを削除", post_post_comment_path(post_comment.post, post_comment), method: :delet, "data-confirm" => "本当に削除しますか？削除したコメントは復元できません。", class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <p></p>
+      <% end %>
+    </div>
+    
+  </div>
+  
 </div>
