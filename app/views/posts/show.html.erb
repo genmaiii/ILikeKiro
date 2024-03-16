@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="text-center">投稿詳細</h1>
   <p id="notice"><%= flash[:notice] %></p>
-  
+
   <div class="card-body rounded" style="background-color:#2F3236;">
     <table>
       <tr>
@@ -22,16 +22,34 @@
     <p>カテゴリ：<%= @post.category %></p>
     <p>ライブ名：<%= @post.live_name %></p>
     <p><%= simple_format(h(@post.comment)) %></p>
-    <% if @post.user == current_user %>
-      <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success" %>
-      <%= link_to "投稿を削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？削除した投稿は復元できません。", class: "btn btn-sm btn-danger" %>
+    
+    <% if user_signed_in? %>
+    
+      <% if @post.user == current_user %>
+        <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success" %>
+        <%= link_to "投稿を削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？削除した投稿は復元できません。", class: "btn btn-sm btn-danger" %>
+      <% else %>
+        <% if @post.favorited_by?(current_user)%>
+          <p>
+            <%= link_to post_favorites_path(@post), method: :delete do %>
+              ♥<%= @post.favorites.count %> いいね
+            <% end %>
+          </p>
+        <% else %>
+          <p>
+            <%= link_to post_image_favorites_path(@post_image), method: :post do %>
+              ♡<%= @post_image.favorites.count %> いいね
+            <% end %>
+          </p>
+        <% end %>
+      <% end %>
     <% else %>
-      <p>いいねボタン</p>
+      <p>ユーザー登録・ログインをするといいねが押せます</p>
     <% end %>
   </div>
-  
+
   <h6></h6>
-  
+
   <div class="card-body rounded" style="background-color:#2F3236;">
     <div>
       <% if user_signed_in? %>
@@ -41,14 +59,14 @@
         <% end %>
       <% end %>
     </div>
-    
+
     <div>
-      <p><%= @post.post_comments.count %>件のコメント</p>
-      
+      <h4><%= @post.post_comments.count %>件のコメント</h4>
+
       <div>
         <p>投稿日時が新しい順、投稿日時が古い順</p>
       </div>
-      
+
       <% @post.post_comments.each do |post_comment| %>
       <table>
         <tr>
@@ -75,7 +93,5 @@
       <p></p>
       <% end %>
     </div>
-    
   </div>
-  
 </div>
