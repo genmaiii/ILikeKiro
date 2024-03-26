@@ -12,8 +12,8 @@ class User < ApplicationRecord
   
   validates :name, presence: true, uniqueness: true, length: {in: 2..20 }, format: { with: /\A[\w]+\z/, message: "は半角英数字、アンダーバーのみ使用できます" }
   validates :display_name, presence: true, length: {in: 2..20 }
-  validates :password, presence: true, length: {in:6..128 }, format: { with: /\A[\w]+\z/ }
-  validates :email, uniqueness: true
+  #validates :password, presence: true, length: {in:6..128 }, format: { with: /\A[\w]+\z/ }
+  #validates :email, uniqueness: true
   
   def email_required?
     false

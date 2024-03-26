@@ -24,27 +24,28 @@
     <p><%= simple_format(h(@post.comment)) %></p>
     
     <% if user_signed_in? %>
-    
       <% if @post.user == current_user %>
+        <p>♡<%= @post.favorites.count %></p>
         <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success" %>
         <%= link_to "投稿を削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？削除した投稿は復元できません。", class: "btn btn-sm btn-danger" %>
       <% else %>
         <% if @post.favorited_by?(current_user)%>
           <p>
             <%= link_to post_favorites_path(@post), method: :delete do %>
-              ♥<%= @post.favorites.count %> いいね
+              ♥<%= @post.favorites.count %>
             <% end %>
           </p>
         <% else %>
           <p>
-            <%= link_to post_image_favorites_path(@post_image), method: :post do %>
-              ♡<%= @post_image.favorites.count %> いいね
+            <%= link_to post_image_favorites_path(@post), method: :post do %>
+              ♡<%= @post.favorites.count %>
             <% end %>
           </p>
         <% end %>
       <% end %>
     <% else %>
-      <p>ユーザー登録・ログインをするといいねが押せます</p>
+      <p>♡<%= @post.favorites.count %></p>
+      <p>※ユーザー登録・ログインをするといいねが押せます</p>
     <% end %>
   </div>
 
@@ -57,6 +58,8 @@
           <%= f.text_area :comment, placeholder: "コメントを入力" %>
           <%= f.submit "送信する", class: "btn btn-sm btn-success" %>
         <% end %>
+      <% else %>
+        <p>※ユーザー登録・ログインをするとコメントができます</p>
       <% end %>
     </div>
 
